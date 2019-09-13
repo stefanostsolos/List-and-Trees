@@ -78,8 +78,8 @@ tree_node * tree(int x, tree_node *left, tree_node *right) {
 int main() {
   list_node *l = list(42, list(17, list(69, list(37, nullptr))));
   cout << "l = 42 -> 17 -> 69 -> 37" << endl;
-  cout << "count_smaller_than(l, 50) = " << count_smaller_than(l, 50) << endl;
-  cout << "is_descending(l) = " << (is_descending(l) ? "true" : "false") << endl;
+  cout << "count_smaller_than(l, 50) = " << count_smaller_than(l, 50) << '\n';
+  cout << "is_descending(l) = " << (is_descending(l) ? "true" : "false") << '\n';
 
   tree_node *t = tree(42,
       tree(17,
@@ -95,10 +95,10 @@ int main() {
   cout << " 22    4    89" << endl;
   cout << "   \\    \\" << endl;
   cout << "    6    78" << endl;
-  cout << "count_internal(t) = " << count_internal(t) << endl;
-  cout << "minimum(t) = " << minimum(t) << endl;
+  cout << "count_internal(t) = " << count_internal(t) << '\n';
+  cout << "minimum(t) = " << minimum(t) << '\n';
   cout << "sum_of_children(t) = " << (sum_of_children(t) ? "true" : "false")
-    << endl;
+    << '\n';
 }
 
 #endif
