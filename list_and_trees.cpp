@@ -14,50 +14,52 @@ struct tree_node {
 };
 
 #endif
+
 int count_smaller_than(list_node *n, int x) {
-  int i=0;
-  while (n!=NULL){
-    if (n->data<x) i++;
-    n=n->next;
+  int i = 0;
+  while (n != NULL){
+    if (n->data < x) i++;
+    n = n->next;
   }
   return i;
 }
 
 bool is_descending(list_node *n) {
-  bool  flag=true;
-  list_node *first=n;
-  if (first==NULL) return flag;
-  list_node *second=n->next;
-  if (second==NULL) return flag;
-  while (second!=NULL) {
-    if ((second->data)>(first->data)) flag=false;
-    first=second;
-    second=second->next;
+  bool  flag = true;
+  list_node *first = n;
+  if (first == NULL) return flag;
+  list_node *second = n->next;
+  if (second == NULL) return flag;
+  while (second != NULL) {
+    if ((second->data) > (first->data)) flag = false;
+    first = second;
+    second = second->next;
   }
   return flag;
 }
 
 int count_internal(tree_node *t) {
-  if (t==NULL) return 0;
-  if ((t->right==NULL)&&(t->left==NULL)) return 0;
+  if (t == NULL) return 0;
+  if ((t->right == NULL)&&(t->left == NULL)) return 0;
   return (1+(count_internal(t->left))+(count_internal(t->right)));  
 }
 int minimum(tree_node *t) {
-  tree_node * aristeros= t->left;//not empty
-  tree_node * prev=t;
-  while (aristeros!=NULL){
-    prev=aristeros;
-    aristeros=aristeros->left;
+  tree_node * leftt = t->left; //not empty
+  tree_node * prev = t;
+  while (leftt != NULL){
+    prev = leftt;
+    leftt = leftt->left;
   }
   return (prev->data);
 }
 bool sum_of_children(tree_node *t) {
-  if (t==NULL) return true;
-  if (((t->right)==NULL)&&((t->left)==NULL))return true;
-  if ((t->right)==NULL) return (((t->data)==(t->left)->data)&&(sum_of_children(t->left))); 
-  if ((t->left)==NULL) return (((t->data)==(t->right)->data)&&(sum_of_children(t->right)));
-  return (((t->data)==(((t->right)->data)+((t->left)->data)))&&(sum_of_children(t->left)&&(sum_of_children(t->right))));
+  if (t == NULL) return true;
+  if (((t->right) == NULL)&&((t->left) == NULL))return true;
+  if ((t->right) == NULL) return (((t->data) == (t->left)->data)&&(sum_of_children(t->left))); 
+  if ((t->left) == NULL) return (((t->data) == (t->right)->data)&&(sum_of_children(t->right)));
+  return (((t->data) == (((t->right)->data) + ((t->left)->data)))&&(sum_of_children(t->left)&&(sum_of_children(t->right))));
 }
+
 #ifndef CONTEST
 
 list_node * list(int x, list_node *next) {
@@ -102,4 +104,3 @@ int main() {
 }
 
 #endif
-
