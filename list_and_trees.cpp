@@ -1,4 +1,3 @@
-#ifndef CONTEST
 #include <iostream>
 
 using namespace std;
@@ -12,8 +11,6 @@ struct tree_node {
   int data;
   tree_node *left, *right;
 };
-
-#endif
 
 int count_smaller_than(list_node *n, int x) {
   int i = 0;
@@ -43,6 +40,7 @@ int count_internal(tree_node *t) {
   if ((t->right == NULL)&&(t->left == NULL)) return 0;
   return (1+(count_internal(t->left))+(count_internal(t->right)));  
 }
+
 int minimum(tree_node *t) {
   tree_node * leftt = t->left; //not empty
   tree_node * prev = t;
@@ -52,6 +50,7 @@ int minimum(tree_node *t) {
   }
   return (prev->data);
 }
+
 bool sum_of_children(tree_node *t) {
   if (t == NULL) return true;
   if (((t->right) == NULL)&&((t->left) == NULL))return true;
@@ -59,8 +58,6 @@ bool sum_of_children(tree_node *t) {
   if ((t->left) == NULL) return (((t->data) == (t->right)->data)&&(sum_of_children(t->right)));
   return (((t->data) == (((t->right)->data) + ((t->left)->data)))&&(sum_of_children(t->left)&&(sum_of_children(t->right))));
 }
-
-#ifndef CONTEST
 
 list_node * list(int x, list_node *next) {
   list_node *n = new list_node;
@@ -102,5 +99,3 @@ int main() {
   cout << "sum_of_children(t) = " << (sum_of_children(t) ? "true" : "false")
     << '\n';
 }
-
-#endif
